@@ -8,12 +8,25 @@ import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
-  public static void main(String[] args) {}
+  public static void main(String[] args) {
+    System.out.println(isPingPongTest(30));
+  }
 
   public static ArrayList isPingPongTest(Integer countTo) {
     ArrayList<Object> numberArray = new ArrayList<Object>();
     for (Integer i = 1; i <= countTo; i++) {
-      numberArray.add(i);
+      if (isDivisibleBy15(i)) {
+        numberArray.add("ping-pong");
+      }
+      else if (isDivisibleBy3(i)) {
+        numberArray.add("ping");
+      }
+      else if (isDivisibleBy5(i)) {
+        numberArray.add("pong");
+      }
+      else {
+        numberArray.add(i);
+      }
     }
     return numberArray;
   }
